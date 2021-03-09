@@ -54,6 +54,8 @@ nsp.emit("hi", "everyone!");
 
       let userTopScore = null;
 
+      let totalTime = null;
+
 
     nsp.on("connection", function (socket) {
       console.log("ppppp pfff");
@@ -268,6 +270,17 @@ nsp.emit("hi", "everyone!");
        socket.on("getYoutube", function () {
          nsp.emit("YoutubeID", youtubeID);
        });
+
+
+         socket.on("setTotalTime", function(val) {
+           totalTime = val;
+           nsp.emit("totalTime", totalTime);
+         });
+         socket.on("getTotalTime", function() {
+           nsp.emit("totalTime", totalTime);
+         });
+
+
 
        socket.on("getUserOnline", function () {
          nsp.emit("userOnline", users);

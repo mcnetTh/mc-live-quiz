@@ -56,9 +56,21 @@ nsp.emit("hi", "everyone!");
 
       let totalTime = null;
 
+      let msg = null;
+
 
     nsp.on("connection", function (socket) {
       console.log("ppppp pfff");
+
+
+         socket.on("setMsg", function (val) {
+         msg = val;
+         nsp.emit("msg", {
+           msg,
+         });
+       });
+
+
      
        socket.on("setUserTopScore", function (val) {
          userTopScore = val;

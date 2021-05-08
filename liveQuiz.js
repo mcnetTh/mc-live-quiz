@@ -133,9 +133,11 @@ nsp.emit("hi", "everyone!");
            qData.total_true = data.total_true;
            qData.total_wrong = data.total_wrong;
            qData.total_answer = data.total_answer;
+           qData.total_empty = data.total_empty;
            qData.answer = data.answer;
            qData.q_true = data.q_true;
            qData.q_wrong = data.q_wrong;
+           qData.q_empty = data.q_empty;
            qData.cssClass = data.cssClass;
 
            memberPlayData[data.member_id] = qData;
@@ -152,6 +154,7 @@ nsp.emit("hi", "everyone!");
          qData.total_true = data.total_true;
          qData.total_answer = data.total_answer;
          qData.total_wrong = data.total_wrong;
+         qData.total_empty = data.total_empty;
 
          questionData[data.question_no] = qData;
 

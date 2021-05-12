@@ -22,7 +22,7 @@ nsp.emit("hi", "everyone!");
 
  
 
-  console.log('ooooo') 
+ // console.log('ooooo') 
 
 
   module.exports = function (io) {
@@ -60,7 +60,7 @@ nsp.emit("hi", "everyone!");
 
 
     nsp.on("connection", function (socket) {
-      console.log("ppppp pfff");
+      //console.log("ppppp pfff");
 
 
          socket.on("setMsg", function (val) {
@@ -127,7 +127,7 @@ nsp.emit("hi", "everyone!");
        socket.on("setUserPlayST", function (data) {
          let qData = memberPlayData[data.member_id];
 
-         console.log(qData);
+         //console.log(qData);
 
          if (qData) {
            qData.total_true = data.total_true;
@@ -318,8 +318,8 @@ nsp.emit("hi", "everyone!");
          let member_id = socketList[socket.id];
          let memberData = memberPlayData[member_id];
 
-         console.log("mmm");
-         console.log(memberData);
+         //console.log("mmm");
+         //console.log(memberData);
          if (memberData) {
            memberData.cssClass = "memberPlayOffline";
          }
@@ -339,7 +339,7 @@ nsp.emit("hi", "everyone!");
 
        // รับเฉพาะ Event ข้อความ จาก client
        socket.on("chat message", function (msg) {
-         console.log("socket by : ", socket.id, " message: " + msg);
+         //console.log("socket by : ", socket.id, " message: " + msg);
          // ส่งข้อมูลกลับไปหาผู้ส่งมา
          nsp.emit(
            "chat message",

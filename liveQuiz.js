@@ -56,7 +56,8 @@ nsp.emit("hi", "everyone!");
 
       let totalTime = null;
 
-      let msg = null;
+      let msg = new Array();
+    
 
 
     nsp.on("connection", function (socket) {
@@ -64,11 +65,35 @@ nsp.emit("hi", "everyone!");
 
 
          socket.on("setMsg", function (val) {
-         msg = val;
+ //console.log(val);
+            msg.unshift(val );
+
+            const index = msg.indexOf(50);
+            
+            
+            
+
+            if (msg.length > 50) {
+            
+          
+             msg.splice(index, 1);
+
+             
+            }
+
+           // console.log(msg)
+
+        
          nsp.emit("msg", {
            msg,
          });
        });
+
+          socket.on("getMsg", function() {
+            nsp.emit("msg", {
+              msg,
+            });
+          });
 
 
      

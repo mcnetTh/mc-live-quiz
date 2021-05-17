@@ -372,6 +372,60 @@ nsp.emit("hi", "everyone!");
          );
        });
 
+
+
+
+       ///////////
+
+socket.on("userStart", function (msg) {
+
+     nsp.emit("userTopScore", {
+       userTopScore,
+     });
+     nsp.emit("openTopScore", {
+       openTopScore,
+     });
+     nsp.emit("openAnswer", {
+       openAnswer,
+     });
+     nsp.emit("totalPlayed", {
+       totalPlayed,
+     });
+     nsp.emit("memberPlayData", {
+       memberPlayData,
+     });
+
+      nsp.emit("memberPlay", {
+        memberPlayList: memberPlayList,
+        memberPlayTotal: memberPlayTotal,
+      });
+
+        nsp.emit("questionDetail", {
+          questionList: questionList,
+          questionTotal: questionTotal,
+        });
+
+     nsp.emit("questionData", {
+       questionData,
+     });
+     nsp.emit("questionPlayNo", {
+       questionPlayNo,
+     });
+     nsp.emit("totalTime", totalTime);
+   
+     nsp.emit("YoutubeID", youtubeID);
+
+    nsp.emit("userOnline", users);
+   nsp.emit("totalOnline", Object.keys(users).length);
+
+     
+        
+       });
+
+
+       ////////////////////
+     
+
        socket.on("resetData", function (val) {
          currentQuestion = 0;
          gameStatus = "H";
@@ -418,9 +472,11 @@ nsp.emit("hi", "everyone!");
          nsp.emit("questionPlayNo", {
            questionPlayNo,
          });
-         socket.on("getYoutube", function () {
-           nsp.emit("YoutubeID", youtubeID);
-         });
+        
+         nsp.emit("YoutubeID", youtubeID);
+    
+           nsp.emit("userOnline", users);
+           nsp.emit("totalOnline", Object.keys(users).length);
 
          nsp.emit("resetGame", {
            questionData,

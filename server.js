@@ -7,6 +7,7 @@ var http = require("http").Server(app);
 var port = process.env.PORT || 3000;
 
 const io = require("socket.io")(http, {
+  pingTimeout: 60000,
   cors: {
     origin: "*",
     methods: ["GET", "POST"],

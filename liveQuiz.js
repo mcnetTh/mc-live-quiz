@@ -430,7 +430,7 @@ socket.on("userStart", function (msg) {
          currentQuestion = 0;
          gameStatus = "H";
          gameStartDate = null;
-         youtubeID = null;
+          
 
          memberPlayList = {};
          memberPlayTotal = 0;

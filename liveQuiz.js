@@ -39,10 +39,21 @@ nsp.emit("hi", "everyone!");
        
             let users = {};
             let socketList = {};
+            let connectCounter = 0;
     
 
 
+
+
     nsp.on("connection", function (socket) {
+
+ 
+    connectCounter++;
+    console.log(connectCounter);
+   
+   
+
+
       
   socket.on("setOpenAnswer", function(q_no) {
     openAnswer = q_no;
@@ -113,8 +124,12 @@ nsp.emit("hi", "everyone!");
     
 
      socket.on("disconnect", function() {
+
+       console.log("offline : " + socket.id);
+         connectCounter--;
+         console.log(connectCounter);
+
       
-       console.log("offline" + socket.id);
        delete users[socketList[socket.id]];
       nsp.emit("userOnline", {userOnline:users, totalOnline:Object.keys(users).length});
      });
@@ -150,9 +165,7 @@ nsp.emit("hi", "everyone!");
 
 
         socket.on("startBrowser", function(val) {
-
-          console.log('cccc')
-       
+ 
           nsp.emit("getStart", {
             questionStatus: questionStatus,
             questionPlayNo: questionPlayNo,

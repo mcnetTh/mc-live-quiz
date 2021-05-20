@@ -36,13 +36,15 @@ nsp.emit("hi", "everyone!");
           let msg = null;
           let gameStatus  = 'H'
             let gameStartDate = null;
+
+          
        
             let users = {};
             let socketList = {};
             let connectCounter = 0;
     
-
-
+  let userScore = {};
+  let userAnswer = {};
 
 
     nsp.on("connection", function (socket) {
@@ -106,9 +108,11 @@ nsp.emit("hi", "everyone!");
 
  
 
-     socket.on("setMember", function(val) {
-       users[val] = val;
-       socketList[socket.id] = val; 
+     socket.on("setMember", function(member_id) {
+       users[member_id] = member_id;
+       socketList[socket.id] = member_id; 
+
+       
 
         nsp.emit("userOnline", {userOnline:users, totalOnline:Object.keys(users).length});
      });
@@ -121,6 +125,28 @@ nsp.emit("hi", "everyone!");
        socket.on("getYoutube", function() {
          nsp.emit("YoutubeID", youtubeID);
        });
+
+
+
+     socket.on("setMemberAnswer", function(data) {  
+       console.log(data)
+     
+      //userAnswer[data.member_id][data.question_no] = data.collect
+
+      let uAnswer =  userAnswer[data.member_id] ;
+
+      uAnswer[data.question_no] = data.collect
+         console.log('XXX');
+         console.log(uAnswer);
+         
+       //  uAnswer[data.question_no] = '56445465' 
+
+          //userAnswer[data.member_id][data.question_no] = data.collect;
+
+        
+        });
+
+
     
 
      socket.on("disconnect", function() {
@@ -152,6 +178,14 @@ nsp.emit("hi", "everyone!");
               totalTime = null;
               questionStatus = null;
               openAnswer = 0;
+             
+
+                userScore = val.userScore;
+                userAnswer = val.userAnswer;
+
+               console.log(userScore);
+               console.log(userAnswer);
+
 
                gameStatus = 'H';
                gameStartDate = null;

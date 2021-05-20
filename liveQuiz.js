@@ -1,28 +1,3 @@
-/*    var express = require("express");
- var app = express();
- var http = require("http").Server(app);
- 
- const io = require("socket.io")(http, {
-   cors: {
-     origin: "*",
-     methods: ["GET", "POST"],
-     allowedHeaders: ["Access-Control-Allow-Origin"],
-     credentials: true,
-   },
- });
-
- console.log('ddd888dd')
-
-   const nsp = io.of("/liveQuiz");
-nsp.on("connection", function (socket) {
-  console.log("someone connectedxxxx");
-});
-nsp.emit("hi", "everyone!");
- */
-
- 
-
- // console.log('ooooo') 
 
 
   module.exports = function (io) {
@@ -112,6 +87,7 @@ nsp.emit("hi", "everyone!");
        users[member_id] = member_id;
        socketList[socket.id] = member_id; 
 
+       console.log(xxx)
        
 
         nsp.emit("userOnline", {userOnline:users, totalOnline:Object.keys(users).length});

@@ -450,3 +450,8 @@ io.on("connection", function (socket) {
 http.listen(port, function () {
   console.log("Run Port // localhost:", port);
 });
+
+process.on("uncaughtException", function(err) {
+  console.error(err);
+  console.log("Node NOT Exiting...");
+});

@@ -133,11 +133,11 @@ nsp.emit("hi", "everyone!");
      
       //userAnswer[data.member_id][data.question_no] = data.collect
 
-      let uAnswer =  userAnswer[data.member_id] ;
+    //  let uAnswer =  userAnswer[data.member_id] ;
 
-      uAnswer[data.question_no] = data.collect
-         console.log('XXX');
-         console.log(uAnswer);
+     // uAnswer[data.question_no] = data.collect
+        // console.log('XXX');
+        // console.log(uAnswer);
          
        //  uAnswer[data.question_no] = '56445465' 
 

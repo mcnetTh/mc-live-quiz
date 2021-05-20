@@ -87,9 +87,7 @@
        users[member_id] = member_id;
        socketList[socket.id] = member_id; 
 
-       console.log(xxx)
-       
-
+    
         nsp.emit("userOnline", {userOnline:users, totalOnline:Object.keys(users).length});
      });
 

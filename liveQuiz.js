@@ -17,6 +17,8 @@
             let users = {};
             let socketList = {};
             let connectCounter = 0;
+
+             let countAnswer = 0;
     
   let userScore = {};
   let userAnswer = {};
@@ -39,6 +41,14 @@
     });
   });
 
+ 
+
+   
+   
+
+
+
+
          socket.on("setGameStatus", function(game) {
            gameStatus = game.status;
            gameStartDate = game.start_date;
@@ -53,9 +63,11 @@
           playTime = val.PlayTime;
            questionPlayNo = val.QuestionPlayNo; 
            questionStatus = 'PLAY'
+           countAnswer = 0
            console.log(val);
 
            nsp.emit("startQuestion", {
+             countAnswer: countAnswer,
              playTime: playTime,
              questionPlayNo: questionPlayNo,
              questionStatus: "PLAY",
@@ -104,6 +116,20 @@
 
      socket.on("setMemberAnswer", function(data) {  
        console.log(data)
+
+       if(data) {
+         if(data.collect) {
+           if(data.collect != 'C') {
+
+               countAnswer++;
+               console.log(countAnswer);
+               nsp.emit("countAnswer", {
+                 countAnswer,
+               });
+              
+           }
+         }
+       }
      
       //userAnswer[data.member_id][data.question_no] = data.collect
 
